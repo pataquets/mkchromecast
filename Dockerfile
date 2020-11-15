@@ -4,7 +4,6 @@ RUN \
   apt update && \
   DEBIAN_FRONTEND=noninteractive \
     apt-get install -y \
-      avconv \
       ffmpeg \
       pulseaudio-utils \
   && \
