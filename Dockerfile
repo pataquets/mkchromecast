@@ -11,11 +11,16 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/
 
+RUN pip install --no-cache youtube-dl
+
 RUN apt-get update
 
   # DEBIAN_FRONTEND=noninteractive \
   #   apt-get install -y \
 
-COPY requirements.txt /usr/src/mkchromecast/
 WORKDIR /usr/src/mkchromecast/
+
+COPY requirements.txt .
 RUN pip install --no-cache -r requirements.txt
+
+COPY . .
