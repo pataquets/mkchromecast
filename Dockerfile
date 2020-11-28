@@ -13,14 +13,12 @@ RUN \
 
 RUN pip install --no-cache youtube-dl
 
-RUN apt-get update
-
-  # DEBIAN_FRONTEND=noninteractive \
-  #   apt-get install -y \
-
 WORKDIR /usr/src/mkchromecast/
 
 COPY requirements.txt .
 RUN pip install --no-cache -r requirements.txt
 
 COPY . .
+RUN pip install --no-cache .
+
+ENTRYPOINT [ "mkchromecast" ]
